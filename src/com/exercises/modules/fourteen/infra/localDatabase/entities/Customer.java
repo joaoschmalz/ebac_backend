@@ -1,4 +1,4 @@
-package com.exercises.modules.fourteen.infra.database.entities;
+package com.exercises.modules.fourteen.infra.localDatabase.entities;
 
 public class Customer {
   private String name;

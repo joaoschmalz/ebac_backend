@@ -1,7 +1,7 @@
 package com.exercises.modules.fourteen.mapper;
 
 import com.exercises.modules.fourteen.dtos.CustomerDTO;
-import com.exercises.modules.fourteen.infra.database.entities.Customer;
+import com.exercises.modules.fourteen.infra.localDatabase.entities.Customer;
 import com.exercises.modules.fourteen.infra.http.views.CustomerView;
 
 public class CustomerMapper {

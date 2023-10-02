@@ -2,7 +2,6 @@ package com.exercises.modules.fourteen.services;
 
 import com.exercises.modules.fourteen.dtos.CustomerDTO;
 
-public interface ICreateCustomerService {
-
-  void execute(final CustomerDTO customerDTO) throws Exception;
+public interface IUpdateCustomerService {
+  void execute(final CustomerDTO dto);
 }
