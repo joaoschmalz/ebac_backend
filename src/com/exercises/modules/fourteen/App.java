@@ -1,9 +1,8 @@
 package com.exercises.modules.fourteen;
 
-import com.exercises.modules.fourteen.dtos.CustomerDTO;
-import com.exercises.modules.fourteen.infra.http.controller.CustomerController;
-import com.exercises.modules.fourteen.infra.http.views.CustomerView;
 import com.exercises.modules.fourteen.infra.localDatabase.entities.Customer;
+import com.exercises.modules.fourteen.infra.localDatabase.repositories.CustomerRepository;
+import com.exercises.modules.fourteen.repositories.ICustomerRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,8 +10,7 @@ import java.util.Scanner;
 import static java.util.Objects.isNull;
 
 public class App {
-
-  private static final CustomerController controller = new CustomerController();
+  private static final ICustomerRepository repository = new CustomerRepository();
 
   public static void main(String[] args) {
 
@@ -58,7 +56,16 @@ public class App {
   }
 
   private static void create(){
-    controller.create(createView(true));
+    try {
+      repository.create(createCustomerObj(true));
+      System.out.println("Customer created !!!");
+      System.out.println("-----------------------------------");
+    } catch (Exception e) {
+      System.out.println("Failed to create new Customer");
+      System.out.println(e.getMessage());
+      System.out.println("-----------------------------------");
+    }
+
   }
 
   public static void retrieveSingle() {
@@ -66,7 +73,11 @@ public class App {
     try {
       System.out.println("Enter customer CPF");
       String cpf = s.nextLine();
-      controller.index(cpf);
+      final Customer customer = repository.retrieveSingle(cpf);
+
+      if (isNull(customer)) throw new Exception("Customer not found");
+      System.out.println(customer);
+      System.out.println("-----------------------------------");
     } catch (Exception e) {
       System.out.println(e.getMessage());
       System.out.println("-----------------------------------");
@@ -74,9 +85,10 @@ public class App {
   }
 
   public static void retrieveAll() {
-    final List<Customer> customers = controller.show();
+    final List<Customer> customers = repository.retrieveAll();
 
     for (Customer c : customers) System.out.println(c);
+    System.out.println("-----------------------------------");
   }
 
   public static void update() {
@@ -84,39 +96,52 @@ public class App {
     try {
       System.out.println("Enter Customer CPF:");
       String cpf = s.nextLine();
-      final CustomerView view = createView(false);
-      view.setCpf(cpf);
-      controller.update(view);
+      Customer retrievedCustomer = repository.retrieveSingle(cpf);
+
+      if(isNull(retrievedCustomer)) {
+        System.out.println("Customer not found");
+        return;
+      }
+
+      final Customer customer = createCustomerObj(false);
+      customer.setCpf(cpf);
+      repository.update(customer);
+      System.out.println("Customer updated !!!");
+      System.out.println("-----------------------------------");
     } catch (Exception e) {
       System.out.println(e.getMessage());
+      System.out.println("Failed to update customer !!!");
+      System.out.println("-----------------------------------");
     }
   }
 
   public static void delete() {
     Scanner s = new Scanner(System.in);
     System.out.println("Enter Customer CPF");
-    controller.delete(s.nextLine());
+    repository.delete(s.nextLine());
+    System.out.println("Customer deleted !!!");
+    System.out.println("-----------------------------------");
   }
-  private static CustomerView createView(final boolean needCpf) {
+  private static Customer createCustomerObj(final boolean needCpf) {
     Scanner s = new Scanner(System.in);
-    final CustomerView view = new CustomerView();
+    final Customer customer = new Customer();
     System.out.println("Enter Customer information");
 
     System.out.println("Customer name:");
-    view.setName(s.nextLine());
+    customer.setName(s.nextLine());
     if (needCpf) {
       System.out.println("Customer CPF:");
-      view.setCpf(s.nextLine());
+      customer.setCpf(s.nextLine());
     }
     System.out.println("Customer phone:");
-    view.setPhone(s.nextLine());
+    customer.setPhone(s.nextLine());
     System.out.println("Customer address:");
-    view.setAddress(s.nextLine());
+    customer.setAddress(s.nextLine());
     System.out.println("Customer city:");
-    view.setCity(s.nextLine());
+    customer.setCity(s.nextLine());
     System.out.println("Customer state:");
-    view.setState(s.nextLine());
+    customer.setState(s.nextLine());
 
-    return view;
+    return customer;
   }
 }
