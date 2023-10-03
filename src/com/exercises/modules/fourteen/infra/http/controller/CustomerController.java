@@ -17,21 +17,21 @@ public class CustomerController {
   private final IRetrieveSingleCustomerService retrieveSingleService = new RetrieveSingleCustomerService();
   private final IDeleteCustomerService deleteService = new DeleteCustomerService();
 
-  public boolean create(final CustomerView view) {
+  public void create(final CustomerView view) {
     try {
       createService.execute(CustomerMapper.mapper(view));
-      return true;
+      System.out.println("Customer created !!!");
+      System.out.println("-----------------------------------");
     } catch (Exception e) {
       System.out.println(e.getMessage());
-      return false;
     }
   }
 
-  public Customer index(final String cpf) throws Exception {
+  public void index(final String cpf) throws Exception {
     final Customer customer = this.retrieveSingleService.execute(cpf);
     if (isNull(customer)) throw new Exception("Customer not found");
 
-    return customer;
+    System.out.println(customer);
   }
 
   public List<Customer> show() {
@@ -42,7 +42,7 @@ public class CustomerController {
     this.deleteService.execute(cpf);
   }
 
-  public void update(final CustomerView view) {
+  public void update(final CustomerView view) throws Exception {
     this.updateService.execute(CustomerMapper.mapper(view));
   }
 }
