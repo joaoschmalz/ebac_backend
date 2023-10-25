@@ -57,4 +57,16 @@ public class Customer {
   public void setState(String state) {
     this.state = state;
   }
+
+  @Override
+  public String toString() {
+    return "Customer {" +
+            "name='" + name + '\'' +
+            ", cpf='" + cpf + '\'' +
+            ", phone='" + phone + '\'' +
+            ", address='" + address + '\'' +
+            ", city='" + city + '\'' +
+            ", state='" + state + '\'' +
+            '}';
+  }
 }
