@@ -1,4 +1,4 @@
-package com.exercises.modules.seventeen.domain;
+package com.exercises.modules.seventeen.first.domain;
 
 public interface Persistable {
   String getIdentifier();

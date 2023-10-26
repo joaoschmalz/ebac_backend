@@ -1,23 +1,23 @@
-package com.exercises.modules.seventeen.domain;
+package com.exercises.modules.seventeen.first.domain;
 
 import java.util.Date;
 
-public class Helicopter implements Persistable {
+public class Bus implements Persistable {
 
   private String modelName;
-  private String brandName;
   private Date fabricationDate;
-  private String useType;
   private int passengersCapacity;
   private int fuelCapacityInLiters;
+  private int horsePower;
+  private int numberWheels;
 
-  public Helicopter(String modelName, String brandName, Date fabricationDate, String useType, int passengersCapacity, int fuelCapacityInLiters) {
+  public Bus(String modelName, Date fabricationDate, int passengersCapacity, int fuelCapacityInLiters, int horsePower, int numberWheels) {
     this.modelName = modelName;
-    this.brandName = brandName;
     this.fabricationDate = fabricationDate;
-    this.useType = useType;
     this.passengersCapacity = passengersCapacity;
     this.fuelCapacityInLiters = fuelCapacityInLiters;
+    this.horsePower = horsePower;
+    this.numberWheels = numberWheels;
   }
 
   @Override
@@ -33,28 +33,12 @@ public class Helicopter implements Persistable {
     this.modelName = modelName;
   }
 
-  public String getBrandName() {
-    return brandName;
-  }
-
-  public void setBrandName(String brandName) {
-    this.brandName = brandName;
-  }
-
   public Date getFabricationDate() {
     return fabricationDate;
   }
 
   public void setFabricationDate(Date fabricationDate) {
     this.fabricationDate = fabricationDate;
-  }
-
-  public String getUseType() {
-    return useType;
-  }
-
-  public void setUseType(String useType) {
-    this.useType = useType;
   }
 
   public int getPassengersCapacity() {
@@ -71,5 +55,21 @@ public class Helicopter implements Persistable {
 
   public void setFuelCapacityInLiters(int fuelCapacityInLiters) {
     this.fuelCapacityInLiters = fuelCapacityInLiters;
+  }
+
+  public int getHorsePower() {
+    return horsePower;
+  }
+
+  public void setHorsePower(int horsePower) {
+    this.horsePower = horsePower;
+  }
+
+  public int getNumberWheels() {
+    return numberWheels;
+  }
+
+  public void setNumberWheels(int numberWheels) {
+    this.numberWheels = numberWheels;
   }
 }

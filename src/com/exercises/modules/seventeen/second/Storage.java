@@ -1,4 +1,4 @@
-package com.exercises.modules.seventeen;
+package com.exercises.modules.seventeen.second;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import static java.util.Objects.isNull;
 public class Storage {
 
   private static Storage storage;
-  protected Map<Class, Map<String, ?>> map;
+  protected Map<Class, Map<Long, ?>> map;
 
   private Storage() {
     map = new HashMap<>();
@@ -21,7 +21,7 @@ public class Storage {
     return storage;
   }
 
-  public Map<Class, Map<String, ?>> getMap() {
+  public Map<Class, Map<Long, ?>> getMap() {
     return this.map;
   }
 }

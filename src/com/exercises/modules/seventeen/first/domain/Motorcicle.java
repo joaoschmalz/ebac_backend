@@ -1,8 +1,8 @@
-package com.exercises.modules.seventeen.domain;
+package com.exercises.modules.seventeen.first.domain;
 
 import java.util.Date;
 
-public class Bus implements Persistable {
+public class Motorcicle implements Persistable {
 
   private String modelName;
   private Date fabricationDate;
@@ -11,7 +11,7 @@ public class Bus implements Persistable {
   private int horsePower;
   private int numberWheels;
 
-  public Bus(String modelName, Date fabricationDate, int passengersCapacity, int fuelCapacityInLiters, int horsePower, int numberWheels) {
+  public Motorcicle(String modelName, Date fabricationDate, int passengersCapacity, int fuelCapacityInLiters, int horsePower, int numberWheels) {
     this.modelName = modelName;
     this.fabricationDate = fabricationDate;
     this.passengersCapacity = passengersCapacity;
@@ -22,7 +22,7 @@ public class Bus implements Persistable {
 
   @Override
   public String getIdentifier() {
-    return this.getModelName();
+    return null;
   }
 
   public String getModelName() {

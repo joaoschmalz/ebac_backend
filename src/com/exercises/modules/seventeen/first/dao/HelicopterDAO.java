@@ -1,9 +1,9 @@
-package com.exercises.modules.seventeen.dao;
+package com.exercises.modules.seventeen.first.dao;
 
-import com.exercises.modules.seventeen.Storage;
-import com.exercises.modules.seventeen.dao.generic.GenericDAO;
-import com.exercises.modules.seventeen.domain.Bus;
-import com.exercises.modules.seventeen.domain.Helicopter;
+import com.exercises.modules.seventeen.first.Storage;
+import com.exercises.modules.seventeen.first.dao.generic.GenericDAO;
+import com.exercises.modules.seventeen.first.domain.Bus;
+import com.exercises.modules.seventeen.first.domain.Helicopter;
 
 import java.util.HashMap;
 import java.util.Map;

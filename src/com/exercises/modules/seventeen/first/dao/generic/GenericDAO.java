@@ -1,7 +1,7 @@
-package com.exercises.modules.seventeen.dao.generic;
+package com.exercises.modules.seventeen.first.dao.generic;
 
-import com.exercises.modules.seventeen.Storage;
-import com.exercises.modules.seventeen.domain.Persistable;
+import com.exercises.modules.seventeen.first.Storage;
+import com.exercises.modules.seventeen.first.domain.Persistable;
 
 import java.util.Collection;
 import java.util.Map;
