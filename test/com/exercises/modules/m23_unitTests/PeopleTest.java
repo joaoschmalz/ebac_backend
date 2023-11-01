@@ -1,7 +1,5 @@
-package com.exercises.modules.m23_uniTests;
+package com.exercises.modules.m23_unitTests;
 
-import com.exercises.modules.m23_unitTests.People;
-import com.exercises.modules.m23_unitTests.Person;
 import org.junit.Test;
 
 import java.util.List;
