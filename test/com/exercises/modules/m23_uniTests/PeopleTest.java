@@ -1,0 +1,20 @@
+package com.exercises.modules.m23_uniTests;
+
+import com.exercises.modules.m23_unitTests.People;
+import com.exercises.modules.m23_unitTests.Person;
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+
+public class PeopleTest {
+
+  @Test
+  public void ensureItCanFilterByWomen() {
+
+    People people = new People();
+    List<Person> women = people.filterOnlyWomen();
+    assertFalse(women.stream().anyMatch(w -> w.getGender() == 'M'));
+  }
+}
