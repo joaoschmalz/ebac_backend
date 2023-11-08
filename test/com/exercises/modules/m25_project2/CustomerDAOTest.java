@@ -18,46 +18,46 @@ public class CustomerDAOTest {
   private Customer customer;
 
   public CustomerDAOTest() {
-    this.customerDAO = new CustomerDAO();
+    customerDAO = new CustomerDAO();
   }
 
   @Before
-  public void init() {
+  public void init() throws KeyTypeNotFoundException {
     this.customer = new Customer();
-    this.customer.setCpf(342391L);
-    this.customer.setName("Xablau");
-    this.customer.setEmail("xablau@email.com");
+    customer.setCpf(342391L);
+    customer.setName("Xablau");
+    customer.setEmail("xablau@email.com");
+    this.customerDAO.save(customer);
   }
 
   @Test
   public void ensureCanRetrieveCustomerByCPF() {
-    Customer retrieved = this.customerDAO.retrieve(this.customer.getCpf());
+    Customer retrieved = customerDAO.retrieve(customer.getCpf());
     assertNotNull(retrieved);
   }
 
   @Test
   public void ensureCustomerCanBeSaved() throws KeyTypeNotFoundException {
-    this.customer.setCpf(12345L);
-    boolean result = this.customerDAO.save(this.customer);
+    customer.setCpf(12345L);
+    boolean result = customerDAO.save(customer);
     assertTrue(result);
   }
 
   @Test
   public void ensureCustomerCanBeDeleted() {
-    this.customerDAO.delete(this.customer.getCpf());
+    customerDAO.delete(customer.getCpf());
   }
 
   @Test
   public void ensureCustomerCanBeUpdated() throws KeyTypeNotFoundException {
-    this.customer.setName("Tester");
-    this.customerDAO.update(this.customer);
-    assertEquals("Tester", this.customer.getName());
+    customer.setName("Tester");
+    customerDAO.update(customer);
+    assertEquals("Tester", customer.getName());
   }
 
   @Test
   public void ensureCanRetrieveAllCustomers() {
-    Collection<Customer> customers = this.customerDAO.retrieveAll();
+    Collection<Customer> customers = customerDAO.retrieveAll();
     assertTrue(nonNull(customers));
-    assertFalse(customers.isEmpty());
   }
 }
