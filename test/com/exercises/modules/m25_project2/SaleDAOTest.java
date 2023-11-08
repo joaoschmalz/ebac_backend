@@ -138,8 +138,8 @@ public class SaleDAOTest {
     assertEquals(saleCode, sale.getCode());
     assertNotNull(prod);
     assertEquals(saleCode, prod.getCode());
-    assertEquals(3, (int) sale.getTotalProducts());
-    assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(70));
+    assertEquals(2, (int) sale.getTotalProducts());
+    assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(20));
     assertEquals(2, (int) sale.getTotalProducts());
     assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(20));
     assertEquals(sale.getStatus(), Status.STARTED);
@@ -149,22 +149,22 @@ public class SaleDAOTest {
   public void ensureCanRemoveASingleProduct() throws KeyTypeNotFoundException {
     String saleCode = "A8";
     Sale sale = createSale(saleCode);
-    boolean retorno = this.saleDAO.save(sale);
+    boolean result = this.saleDAO.save(sale);
 
     Product prod = createProduct(saleCode, BigDecimal.valueOf(50));
     Sale saleRetrieved = this.saleDAO.retrieve(saleCode);
     saleRetrieved.addProduct(prod, 1);
     saleRetrieved.removeProduct(prod, 1);
 
-    assertTrue(retorno);
+    assertTrue(result);
     assertNotNull(sale);
     assertEquals(saleCode, sale.getCode());
 
     assertNotNull(prod);
     assertEquals(saleCode, prod.getCode());
 
-    assertEquals(3, (int) sale.getTotalProducts());
-    assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(70));
+    assertEquals(2, (int) sale.getTotalProducts());
+    assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(20));
 
     assertEquals(2, (int) sale.getTotalProducts());
     assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(20));
@@ -188,9 +188,6 @@ public class SaleDAOTest {
 
     assertNotNull(prod);
     assertEquals(saleCode, prod.getCode());
-
-    assertEquals(3, (int) sale.getTotalProducts());
-    assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(70));
 
     assertEquals(0, (int) sale.getTotalProducts());
     assertEquals(sale.getTotalPrice(), BigDecimal.valueOf(0));
@@ -233,9 +230,9 @@ public class SaleDAOTest {
     saleRetrieved.addProduct(this.product, 1);
   }
 
-  private Product createProduct(String codigo, BigDecimal valor) throws KeyTypeNotFoundException {
+  private Product createProduct(String code, BigDecimal valor) throws KeyTypeNotFoundException {
     Product prod = new Product();
-    prod.setCode(codigo);
+    prod.setCode(code);
     prod.setDescription("Product 1");
     prod.setName("Product 1");
     prod.setPrice(valor);
@@ -252,9 +249,9 @@ public class SaleDAOTest {
     return newCustomer;
   }
 
-  private Sale createSale(String codigo) {
+  private Sale createSale(String code) {
     Sale sale = new Sale();
-    sale.setCode(codigo);
+    sale.setCode(code);
     sale.setSaleDate(Instant.now());
     sale.setCustomer(this.customer);
     sale.setStatus(Sale.Status.STARTED);

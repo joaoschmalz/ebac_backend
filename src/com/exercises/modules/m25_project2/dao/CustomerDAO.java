@@ -5,10 +5,6 @@ import com.exercises.modules.m25_project2.domain.Customer;
 
 public class CustomerDAO extends GenericDAO<Customer, Long> implements ICustomerDAO {
 
-//  public CustomerDAO {
-//    super();
-//  }
-
   @Override
   public Class<Customer> getClassType() {
     return Customer.class;
